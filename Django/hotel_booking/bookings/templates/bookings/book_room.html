@@ -1,0 +1,18 @@
+{% extends 'bookings/base.html' %}
+{% block title %}Book Room{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h2>Book Room {{ room.room_number }} at {{ room.hotel.name }}</h2>
+    
+    <div class="card p-4">
+        <form method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit" class="btn btn-success">Confirm Booking</button>
+        </form>
+    </div>
+
+    <a href="{% url 'hotel_list' %}" class="btn btn-secondary mt-3">Cancel</a>
+</div>
+{% endblock %}

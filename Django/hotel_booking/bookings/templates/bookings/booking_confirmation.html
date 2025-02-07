@@ -1,0 +1,17 @@
+{% extends 'bookings/base.html' %}
+{% block title %}Booking Confirmation{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="alert alert-success">Booking Confirmed!</div>
+
+    <h3>Thank you, {{ booking.customer_name }}!</h3>
+    <p><strong>Hotel:</strong> {{ booking.hotel.name }}</p>
+    <p><strong>Room:</strong> {{ booking.room.room_number }}</p>
+    <p><strong>Check-in:</strong> {{ booking.check_in }}</p>
+    <p><strong>Check-out:</strong> {{ booking.check_out }}</p>
+
+    <a href="{% url 'cancel_booking' booking.id %}" class="btn btn-danger">Cancel Booking</a>
+    <a href="{% url 'hotel_list' %}" class="btn btn-secondary">Back to Hotels</a>
+</div>
+{% endblock %}

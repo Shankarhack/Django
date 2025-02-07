@@ -1,0 +1,16 @@
+body {
+    background: url('https://tse1.mm.bing.net/th?id=OIP.BP-1yM3qjtmNdV7GB31xTAHaE8&pid=Api') no-repeat center center fixed;
+    background-size: cover;
+    background-color: #e7eef4;
+
+    
+}
+.card {
+    border-radius: 10px;
+}
+.card-body {
+    text-align: center;
+}
+.btn {
+    width: 100%;
+}

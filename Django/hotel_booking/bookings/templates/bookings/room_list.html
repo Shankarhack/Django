@@ -1,0 +1,40 @@
+{% extends 'bookings/base.html' %}
+{% block title %}Rooms - {{ hotel.name }}{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h2>{{ hotel.name }} - Available Rooms</h2>
+    
+    <!-- Filter buttons -->
+    <a href="?available=true" class="btn btn-outline-success">Show Available Rooms</a>
+    <a href="?available=false" class="btn btn-outline-secondary">Show All Rooms</a>
+
+    <div class="row mt-4">
+        {% for room in rooms %}
+            <div class="col-md-4">
+                <div class="card shadow-sm">
+                    <div class="card-body">
+                        <h5 class="card-title">Room {{ room.room_number }}</h5>
+                        <p class="card-text">
+                            {% if room.is_available %}
+                                <span class="badge bg-success">Available</span>
+                            {% else %}
+                                <span class="badge bg-danger">Booked</span>
+                            {% endif %}
+                        </p>
+                        {% if room.is_available %}
+                            <a href="{% url 'book_room' room.id %}" class="btn btn-primary">Book Now</a>
+                        {% else %}
+                            <button class="btn btn-secondary" disabled>Not Available</button>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        {% empty %}
+            <p>No rooms available.</p>
+        {% endfor %}
+    </div>
+
+    <a href="{% url 'hotel_list' %}" class="btn btn-secondary mt-3">Back to Hotels</a>
+</div>
+{% endblock %}
